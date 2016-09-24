@@ -1,4 +1,4 @@
-package $package$
+package $organization$.$name;format="lower,word"$
 
 import com.typesafe.config._
 

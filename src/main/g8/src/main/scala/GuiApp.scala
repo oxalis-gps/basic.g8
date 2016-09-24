@@ -1,4 +1,4 @@
-package $package$
+package $organization$.$name;format="lower,word"$
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
@@ -8,9 +8,6 @@ import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.VBox
 import scalafx.scene.web.WebView
 
-/**
-  * Created by hiro on 2016/09/24.
-  */
 class GuiApp extends JFXApp {
   stage = new JFXApp.PrimaryStage {
     title = "Hello ScalaFX"

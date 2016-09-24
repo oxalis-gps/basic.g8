@@ -1,7 +1,7 @@
-val Version = "0.1-SNAPSHOT"
+val Version = "$version$"
 
 lazy val commonSettings = Seq(
-  organization := "$package$",
+  organization := "$organization$",
   version := Version,
   scalaVersion := "2.11.8",
 
