@@ -119,10 +119,24 @@ lazy val seleniumSettings = Seq(
   )
 )
 
+lazy val scalaTestSettings = Seq(
+  libraryDependencies ++= Seq(
+    "org.scalatest" % "scalatest_2.11" % "3.0.0" % Test
+  )
+)
+
+lazy val mockitoSettings = Seq(
+  libraryDependencies ++= Seq(
+    "org.mockito" % "mockito-core" % "1.10.19" % Test
+  )
+)
+
 lazy val root = (project in file(".")).
   enablePlugins(JavaAppPackaging).
   settings(commonSettings: _*).
   settings(typesafeConfigSettings: _*).
+  settings(scalaTestSettings: _*).
+  settings(mockitoSettings: _*).
   settings(scalaFxSettings: _*).
   // settings(scalismoSettings: _*).
   // settings(dispatchSettings: _*).
