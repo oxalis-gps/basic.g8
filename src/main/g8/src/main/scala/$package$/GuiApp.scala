@@ -1,4 +1,4 @@
-package com.example
+package $package$
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
