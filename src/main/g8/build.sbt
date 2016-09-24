@@ -4,20 +4,6 @@ lazy val commonSettings = Seq(
   organization := "$package$",
   version := Version,
   scalaVersion := "2.11.8",
-  test in assembly := {},
-
-  assemblyMergeStrategy in assembly := {
-    case PathList("javax", "servlet", xs @ _*)         => MergeStrategy.first
-    case PathList(ps @ _*) if ps.last endsWith ".properties" => MergeStrategy.first
-    case PathList(ps @ _*) if ps.last endsWith ".xml" => MergeStrategy.first
-    case PathList(ps @ _*) if ps.last endsWith ".types" => MergeStrategy.first
-    case PathList(ps @ _*) if ps.last endsWith ".class" => MergeStrategy.first
-    case "application.conf"                            => MergeStrategy.concat
-    case "unwanted.txt"                                => MergeStrategy.discard
-    case x =>
-      val oldStrategy = (assemblyMergeStrategy in assembly).value
-      oldStrategy(x)
-  }
 
   javaOptions ++= Seq(
     "-Djava.library.path=.:./lib"
@@ -37,7 +23,21 @@ lazy val commonSettings = Seq(
     "-Yinline-warnings",
     "-Ywarn-dead-code",
     "-Xfuture"
-  )
+  ),
+    test in assembly := {},
+
+  assemblyMergeStrategy in assembly := {
+    case PathList("javax", "servlet", xs @ _*)         => MergeStrategy.first
+    case PathList(ps @ _*) if ps.last endsWith ".properties" => MergeStrategy.first
+    case PathList(ps @ _*) if ps.last endsWith ".xml" => MergeStrategy.first
+    case PathList(ps @ _*) if ps.last endsWith ".types" => MergeStrategy.first
+    case PathList(ps @ _*) if ps.last endsWith ".class" => MergeStrategy.first
+    case "application.conf"                            => MergeStrategy.concat
+    case "unwanted.txt"                                => MergeStrategy.discard
+    case x =>
+      val oldStrategy = (assemblyMergeStrategy in assembly).value
+      oldStrategy(x)
+  }
 )
 
 lazy val scalismoSettings = Seq(
@@ -118,7 +118,6 @@ lazy val seleniumSettings = Seq(
     "org.seleniumhq.selenium" % "selenium-htmlunit-driver" % "2.52.0"
   )
 )
-
 
 lazy val root = (project in file(".")).
   enablePlugins(JavaAppPackaging).
