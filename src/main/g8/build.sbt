@@ -141,5 +141,5 @@ lazy val root = (project in file(".")).
 
     fork := true,
     fork in run := false,
-    connectInput in run := true,
+    connectInput in run := true
   )
