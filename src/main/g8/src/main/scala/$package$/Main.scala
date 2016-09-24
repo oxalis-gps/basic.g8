@@ -1,8 +1,13 @@
 package $package$
 
+import com.typesafe.config._
+
 object Main {
   def main(args: Array[String]): Unit = {
-    println("Hello World!")
+
+    val config = ConfigFactory.load()
+
+    println(config.getString("hello.message"))
 
     (new GuiApp).main(args)
   }

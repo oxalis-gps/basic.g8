@@ -122,13 +122,13 @@ lazy val seleniumSettings = Seq(
 lazy val root = (project in file(".")).
   enablePlugins(JavaAppPackaging).
   settings(commonSettings: _*).
+  settings(typesafeConfigSettings: _*).
+  settings(scalaFxSettings: _*).
   // settings(scalismoSettings: _*).
   // settings(dispatchSettings: _*).
   // settings(kuromojiSettings: _*).
   // settings(awsLambdaSettings: _*).
-  // settings(scalaFxSettings: _*).
   // settings(twitter4jSettings: _*).
-  // settings(typesafeConfigSettings: _*).
   // settings(akkaSettings: _*).
   // settings(skinnyORMSettings: _*).
   // settings(scalaCsvSettings: _*).
