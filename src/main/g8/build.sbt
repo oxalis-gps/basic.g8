@@ -18,6 +18,26 @@ lazy val commonSettings = Seq(
       val oldStrategy = (assemblyMergeStrategy in assembly).value
       oldStrategy(x)
   }
+
+  javaOptions ++= Seq(
+    "-Djava.library.path=.:./lib"
+  ),
+
+  scalacOptions ++= Seq(
+    "-deprecation",
+    "-encoding", "UTF-8",
+    "-feature",
+    "-language:existentials",
+    "-language:higherKinds",
+    "-language:implicitConversions",
+    "-language:experimental.macros",
+    "-unchecked",
+    "-Xfatal-warnings",
+    "-Xlint",
+    "-Yinline-warnings",
+    "-Ywarn-dead-code",
+    "-Xfuture"
+  )
 )
 
 lazy val scalismoSettings = Seq(
@@ -93,25 +113,28 @@ lazy val scalaCsvSettings = Seq(
   )
 )
 
+lazy val seleniumSettings = Seq(
+  libraryDependencies ++= Seq(
+    "org.seleniumhq.selenium" % "selenium-htmlunit-driver" % "2.52.0"
+  )
+)
+
+
 lazy val root = (project in file(".")).
   enablePlugins(JavaAppPackaging).
   settings(commonSettings: _*).
-  settings(scalismoSettings: _*).
-  settings(dispatchSettings: _*).
-  settings(kuromojiSettings: _*).
-  settings(awsLambdaSettings: _*).
-  settings(scalaFxSettings: _*).
-  settings(twitter4jSettings: _*).
-  settings(typesafeConfigSettings: _*).
-  settings(akkaSettings: _*).
-  settings(skinnyORMSettings: _*).
-  settings(scalaCsvSettings: _*).
+  // settings(scalismoSettings: _*).
+  // settings(dispatchSettings: _*).
+  // settings(kuromojiSettings: _*).
+  // settings(awsLambdaSettings: _*).
+  // settings(scalaFxSettings: _*).
+  // settings(twitter4jSettings: _*).
+  // settings(typesafeConfigSettings: _*).
+  // settings(akkaSettings: _*).
+  // settings(skinnyORMSettings: _*).
+  // settings(scalaCsvSettings: _*).
   settings(
     name := "$application_name$",
-
-    libraryDependencies ++= Seq(
-      "org.seleniumhq.selenium" % "selenium-htmlunit-driver" % "2.52.0"
-    ),
 
     mainClass in assembly := Some("$package$.Main"),
     assemblyJarName in assembly := "$application_name$-%s.jar" format(Version),
@@ -119,24 +142,4 @@ lazy val root = (project in file(".")).
     fork := true,
     fork in run := false,
     connectInput in run := true,
-
-    javaOptions ++= Seq(
-      "-Djava.library.path=.:./lib"
-    ),
-
-    scalacOptions ++= Seq(
-      "-deprecation",
-      "-encoding", "UTF-8",
-      "-feature",
-      "-language:existentials",
-      "-language:higherKinds",
-      "-language:implicitConversions",
-      "-language:experimental.macros",
-      "-unchecked",
-      "-Xfatal-warnings",
-      "-Xlint",
-      "-Yinline-warnings",
-      "-Ywarn-dead-code",
-      "-Xfuture"
-    )
   )
