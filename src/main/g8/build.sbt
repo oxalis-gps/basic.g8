@@ -60,7 +60,7 @@ lazy val typesafeConfigSettings = Seq(
   )
 )
 
-lazy val akkaConfigSettings = Seq(
+lazy val akkaSettings = Seq(
   libraryDependencies ++= Seq(
     "com.typesafe.akka" %% "akka-actor" % "2.4.10"
   )
@@ -83,13 +83,21 @@ lazy val scalaCsvSettings = Seq(
 lazy val root = (project in file(".")).
   enablePlugins(JavaAppPackaging).
   settings(commonSettings: _*).
-  settings(scalaFxSettings: _*).
   settings(scalismoSettings: _*).
+  settings(dispatchSettings: _*).
+  settings(kuromojiSettings: _*).
+  settings(awsLambdaSettings: _*).
+  settings(scalaFxSettings: _*).
+  settings(twitter4jSettings: _*).
+  settings(typesafeConfigSettings: _*).
+  settings(akkaSettings: _*).
+  settings(skinnyORMSettings: _*).
+  settings(scalaCsvSettings: _*).
   settings(
     name := "$application_name$",
 
     libraryDependencies ++= Seq(
-      "org.seleniumhq.selenium" % "selenium-htmlunit-driver" % "2.52.0",
+      "org.seleniumhq.selenium" % "selenium-htmlunit-driver" % "2.52.0"
     ),
 
     mainClass in assembly := Some("$package$.Main"),
