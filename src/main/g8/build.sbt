@@ -135,7 +135,7 @@ lazy val root = (project in file(".")).
   settings(
     name := "$name;format="norm"$",
 
-    mainClass in assembly := Some("$package$.Main"),
+    mainClass in assembly := Some("$organization$.Main"),
     assemblyJarName in assembly := "$name;format="norm"$-%s.jar" format(Version),
 
     fork := true,
