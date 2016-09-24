@@ -133,10 +133,10 @@ lazy val root = (project in file(".")).
   // settings(skinnyORMSettings: _*).
   // settings(scalaCsvSettings: _*).
   settings(
-    name := "$application_name$",
+    name := "$name;format="norm"$",
 
     mainClass in assembly := Some("$package$.Main"),
-    assemblyJarName in assembly := "$application_name$-%s.jar" format(Version),
+    assemblyJarName in assembly := "$name;format="norm"$-%s.jar" format(Version),
 
     fork := true,
     fork in run := false,
