@@ -1,4 +1,4 @@
-package $organization$.$name;format="lower,snake"$
+package $organization$
 
 import com.typesafe.config._
 

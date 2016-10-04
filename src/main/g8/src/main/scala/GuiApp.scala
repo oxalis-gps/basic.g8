@@ -1,4 +1,4 @@
-package $organization$.$name;format="lower,snake"$
+package $organization$
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
