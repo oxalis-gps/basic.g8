@@ -22,5 +22,5 @@ object ParseOption {
 
   val opts: ParserInfo[Opts] = info(parseOpts <*> helper)
 
-  def parse(args: Array[String]) = execParser(args, "$name;format=\"norm\"$", opts)
+  def parse(args: Array[String]) = execParser(args, "$name;format="norm"$", opts)
 }
