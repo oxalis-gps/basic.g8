@@ -131,13 +131,52 @@ lazy val mockitoSettings = Seq(
   )
 )
 
+lazy val pureCsv = Seq(
+  resolvers ++= Seq(
+    Resolver.sonatypeRepo("releases")
+  ),
+  libraryDependencies ++= Seq(
+    "com.github.melrief" %% "purecsv" % "0.0.6"
+  )
+)
+
+lazy val loggerSettings = Seq(
+  libraryDependencies ++= Seq (
+    "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0" % "compile",
+    "org.slf4j" % "slf4j-api" % "1.7.21" % "compile",
+    "ch.qos.logback" % "logback-classic" % "1.1.7" % "runtime"
+  )
+)
+
+lazy val scalaOptparseApplicativeSettings = Seq(
+  resolvers ++= Seq("bmjames Bintray Repo" at "https://dl.bintray.com/bmjames/maven"),
+  libraryDependencies ++= Seq(
+    "net.bmjames" %% "scala-optparse-applicative" % "0.4",
+    "org.scalaz" %% "scalaz-core" % "7.2.6"
+  )
+)
+
+lazy val scrimageSettings = Seq(
+  libraryDependencies ++= Seq(
+    "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.7",
+    "com.sksamuel.scrimage" %% "scrimage-io-extra" % "2.1.7",
+    "com.sksamuel.scrimage" %% "scrimage-filters" % "2.1.7"
+  )
+)
+
+
 lazy val root = (project in file(".")).
   enablePlugins(JavaAppPackaging).
   settings(commonSettings: _*).
   settings(typesafeConfigSettings: _*).
   settings(scalaTestSettings: _*).
   settings(mockitoSettings: _*).
+  settings(scalaOptparseApplicativeSettings: _*).
+  settings(loggerSettings: _*).
+
   settings(scalaFxSettings: _*).
+  // settings(scrimageSettings: _*).
+  // settings(pureCsv: _*).
   // settings(scalismoSettings: _*).
   // settings(dispatchSettings: _*).
   // settings(kuromojiSettings: _*).
